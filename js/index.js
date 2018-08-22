@@ -9,37 +9,21 @@
 
 			
 			input.addEventListener('input', () => {
-				console.log(1);
-				let reg = new RegExp('^' + input.value + '$', 'i');
+				
+				let reg = new RegExp('^' + input.value, 'i');
 					downList.innerHTML = '';
-					downList.style.visibility = "hidden";
-					if (input.value.length > 2) {
+					if (input.value.length > 1) {
 						for (let i = 0; i < countries.length; i++) {
 							if (reg.test(countries[i])) {
-								downList.innerHTML = countries[i];
-								downList.style.visibility = 'visible';
-								break;
+								downList.innerHTML = countries[i] + '<br>';
+								
 							}
 						}
 					}
 
 			});
 
-			/*function down(obj) {
-				let reg = new RegExp('^' + obj.value + '$', 'i');
-					downList.innerHTML = '';
-					downList.style.visibility = "hidden";
-					if (obj.value.length > 2) {
-						for (let i = 0; i < countries.length; i++) {
-							if (reg.test(countries[i])) {
-								downList.innerHTML = countries[i];
-								downList.style.visibility = 'visible';
-								break;
-							}
-						}
-					}
-
-			}*/
+			
 
 
 			downList.addEventListener('click', () =>  {
