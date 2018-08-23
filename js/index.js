@@ -12,18 +12,21 @@
 			
 			input.addEventListener('input', () => {
 				
-				let reg = new RegExp('^' + input.value, 'i');
+				let reg = new RegExp('^' + input.value, 'i'),
+					regList = new RegExp('list-');
 					downList.innerHTML = '';
 					if (input.value.length > 1) {
 						for (let i = 0; i < countries.length; i++) {
 							if (reg.test(countries[i])) {
 								let div = document.createElement('div');
-								div.id = 'list';
+								div.id = 'list-' + i;
 								div.innerHTML = countries[i];
 								form.appendChild(div);
-							} /*else if (downList)){
-								form.removeChild(div);
-							}*/
+							} else if (!reg.test(countries[i]) && document.querySelectorAll(`#list-*`) != 0){
+								for (let i = 0; i < document.querySelectorAll(`#${regList}`).length; i++) {
+									form.removeChild(document.querySelectorAll(`#${regList}`)[i]);
+								}
+							}
 						}
 					}
 
