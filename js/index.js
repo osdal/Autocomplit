@@ -13,16 +13,17 @@
 			input.addEventListener('input', () => {
 				
 				let reg = new RegExp('^' + input.value, 'i'),
-					regList = new RegExp('list-');
+					regList = /list-\d\d/;
 					downList.innerHTML = '';
 					if (input.value.length > 1) {
 						for (let i = 0; i < countries.length; i++) {
 							if (reg.test(countries[i])) {
 								let div = document.createElement('div');
-								div.id = 'list-' + i;
+								let a = div.id = 'list-' + i;
 								div.innerHTML = countries[i];
 								form.appendChild(div);
-							} else if (!reg.test(countries[i]) && document.querySelectorAll(`#list-*`) != 0){
+								console.log(document.querySelectorAll(a.match(regList)));
+							} else if (!reg.test(countries[i]) && document.querySelectorAll(a.match(regList)) != 0){
 								for (let i = 0; i < document.querySelectorAll(`#${regList}`).length; i++) {
 									form.removeChild(document.querySelectorAll(`#${regList}`)[i]);
 								}

@@ -45,3 +45,16 @@ html { width: 100%; height:100%; overflow:hidden; }
   text-align: center;
   display: block;
 }
+
+
+
+div[id*=list] {
+	color: #fff;
+	text-align: center;
+	display: block;
+}
+/* вместо div и p можно использовать любые другие элементы,
+ вместо class также можно использовать id,
+  а вместо dxg - любое необходимое вам сочетание. 
+  Конструкция может оказаться полезной для
+   переоформления компонентов с закрытыми css. Например, у DevExpress все css зашиты в dll, но имена всех классов содержат dxg. */
